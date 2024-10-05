@@ -12,16 +12,23 @@
         }
 
         function addTodo(){
-            const inputEl = document.querySelector("input");
-            const value = inputEl.value;
-            
-            
-            const newDivEl = document.createElement("div");
-            newDivEl.setAttribute("id", ctr);
-            
-            newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + ctr + ')">Delete</button>';
+            const valueEl = document.querySelector("input");
+            const spanEl = document.createElement("span");
+            const buttonEl = document.createElement("button");
+            spanEl.innerHTML = valueEl.value;
+            buttonEl.textContent = "Delete";
+            buttonEl.setAttribute("onclick", "deleteTodo(" + ctr + ")");
 
-            document.querySelector("body").appendChild(newDivEl);
+            const divEl = document.createElement("div");
+            divEl.setAttribute("id", ctr);
+            divEl.appendChild(spanEl);
+            divEl.appendChild(buttonEl);
+
+            document.querySelector("body").appendChild(divEl);
+            
+            //newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + ctr + ')">Delete</button>';
+            valueEl.value = '';
+            
             ctr = ctr + 1;
         }
     </script>
